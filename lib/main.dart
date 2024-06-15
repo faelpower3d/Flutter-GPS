@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gps/home.dart';
+
+import 'menuFirestore.dart';
 
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Localização',
       theme: ThemeData(
       ),
-      home: Home(),
+      home: MenuFirestore(),
     );
   }
 }

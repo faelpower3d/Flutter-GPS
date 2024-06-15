@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "896758370519",
+    "project_id": "testgeoll",
+    "storage_bucket": "testgeoll.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896758370519:android:6353c5bbf11c66c5aba092",
+        "android_client_info": {
+          "package_name": "com.example.gps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGR0y2HEciE9K9T7cSnIWqMxtZLL6KJLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896758370519:android:bb1140615dd05f41aba092",
+        "android_client_info": {
+          "package_name": "com.example.testgps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGR0y2HEciE9K9T7cSnIWqMxtZLL6KJLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
