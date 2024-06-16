@@ -1,8 +1,7 @@
-import 'dart:async';
-
+/*import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'mensagens/messagesFirestore.dart';
+import 'localizacao/localizacaoFirestore.dart';
 import 'nossowidget/widget_button_custom.dart';
 import 'nossowidget/widget_input.dart';
 import 'nossowidget/widget_text_custom.dart';
@@ -44,15 +43,7 @@ class _MenuFirestoreState extends State<MenuFirestore> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Escolha a opção"),
-        actions: [
-          Text(widget.latitude != null
-              ? 'latitude => ${widget.latitude}'
-              : 'Latitude : '),
-          Text(widget.longitude != null
-              ? 'longitude => ${widget.longitude}'
-              : 'Longitude : '),
-        ],
+        title:Text("AUTENTICATION"),
       ),
       body: _menu(context),
     );
@@ -65,13 +56,12 @@ class _MenuFirestoreState extends State<MenuFirestore> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          BotoesCustom("Conversar", onPressed: () {
-            _bdFirestore(ctx, MensagensFirestore(_myuser.text.toString(), _myFriend.text.toString()));
-          }),
           TextosCustom("Seu usuário:", 18, Colors.black),
           TextosCustom("Com quem você quer conversar?", 18, Colors.black),
           ContainerInsere(_myFriend, ""),
-
+          BotoesCustom("Avançar", onPressed: () {
+            _bdFirestore(ctx, MensagensFirestore(_myuser.text.toString(), _myFriend.text.toString()));
+          }),
         ],
       ),
     );
@@ -100,3 +90,4 @@ class _MenuFirestoreState extends State<MenuFirestore> {
     });
   }
 }
+*/
