@@ -1,8 +1,7 @@
-import 'dart:async'; // Importe a biblioteca dart:async para utilizar Timer
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'mensagens/messageList.dart';
 import 'mensagens/messagesFirestore.dart';
 import 'nossowidget/widget_button_custom.dart';
 import 'nossowidget/widget_input.dart';
@@ -37,7 +36,6 @@ class _MenuFirestoreState extends State<MenuFirestore> {
 
   @override
   void dispose() {
-    // Certifique-se de cancelar o Timer ao descartar o widget
     _timer.cancel();
     super.dispose();
   }
@@ -48,24 +46,12 @@ class _MenuFirestoreState extends State<MenuFirestore> {
       appBar: AppBar(
         title: Text("Escolha a opção"),
         actions: [
-          IconButton(
-            onPressed: () {
-              _saveUserSmartphone(context);
-            },
-            icon: Icon(Icons.person),
-          ),
           Text(widget.latitude != null
               ? 'latitude => ${widget.latitude}'
               : 'Latitude : '),
           Text(widget.longitude != null
               ? 'longitude => ${widget.longitude}'
               : 'Longitude : '),
-          IconButton(
-            onPressed: () {
-              _saveFriendSmartphone(context);
-            },
-            icon: Icon(Icons.supervised_user_circle),
-          )
         ],
       ),
       body: _menu(context),
@@ -83,12 +69,9 @@ class _MenuFirestoreState extends State<MenuFirestore> {
             _bdFirestore(ctx, MensagensFirestore(_myuser.text.toString(), _myFriend.text.toString()));
           }),
           TextosCustom("Seu usuário:", 18, Colors.black),
-          ContainerInsere(_myuser, ""),
           TextosCustom("Com quem você quer conversar?", 18, Colors.black),
           ContainerInsere(_myFriend, ""),
-          BotoesCustom("Histórico de mensagens", onPressed: () {
-            _HistoricoFirestore(ctx, MessageList(_myuser.text.toString(), _myFriend.text.toString()));
-          }),
+
         ],
       ),
     );
@@ -108,16 +91,6 @@ class _MenuFirestoreState extends State<MenuFirestore> {
       return page;
     }));
   }
-
-  void _HistoricoFirestore(BuildContext ctx, MessageList page) {
-    Navigator.push(ctx, MaterialPageRoute(builder: (BuildContext context) {
-      return page;
-    }));
-  }
-
-  void _saveUserSmartphone(BuildContext context) {}
-
-  void _saveFriendSmartphone(BuildContext context) {}
 
   void posicaoAtual() async {
     Position p = await Geolocator.getCurrentPosition();
