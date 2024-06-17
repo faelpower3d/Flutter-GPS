@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:geolocator/geolocator.dart';
 import '../models/EnviaFirebase.dart';
-import '../nossowidget/widget_input.dart';
+
 
 
 class MensagensFirestore extends StatefulWidget {
@@ -12,7 +12,7 @@ class MensagensFirestore extends StatefulWidget {
   String? long;
   double? latitude;
   double? longitude;
-  String colecao; // Adicionando o parâmetro colecao
+  String colecao;
 
   MensagensFirestore(this.lat, this.long, this.colecao);
 
@@ -21,7 +21,6 @@ class MensagensFirestore extends StatefulWidget {
 }
 
 class _MensagensFirestoreState extends State<MensagensFirestore> {
-  List _resultsList = [];
   late Timer _timer;
   bool _ativo = false;
 
@@ -34,7 +33,7 @@ class _MensagensFirestoreState extends State<MensagensFirestore> {
   void initState() {
     super.initState();
     inicializarFirebase();
-    // Inicializa o Timer para enviar a posição a cada 6 segundos
+
     _timer = Timer.periodic(Duration(seconds: 6), (timer) {
       posicaoAtual();
     });
@@ -42,7 +41,7 @@ class _MensagensFirestoreState extends State<MensagensFirestore> {
 
   @override
   void dispose() {
-    _timer.cancel(); // Cancela o Timer ao destruir o widget
+    _timer.cancel();
     super.dispose();
   }
 
@@ -69,7 +68,7 @@ class _MensagensFirestoreState extends State<MensagensFirestore> {
               setState(() {}); // Para atualizar a interface após mudança no timer
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: _ativo ? Colors.green : Colors.red, // Cor verde quando ligado
+              backgroundColor: _ativo ? Colors.green : Colors.red,
             ),
             child: Text(_timer.isActive ? 'Desligar Localização' : '🚩 Ligar localização'),
           ),
@@ -82,7 +81,6 @@ class _MensagensFirestoreState extends State<MensagensFirestore> {
     return Container(
       color: Colors.transparent,
       margin: EdgeInsets.only(left: 3, right: 3, bottom: 0, top: 0),
-      child: InputTextos(rotulo, label, controller: txt),
       alignment: AlignmentDirectional.topStart,
     );
   }
@@ -100,7 +98,7 @@ class _MensagensFirestoreState extends State<MensagensFirestore> {
       dl.long = widget.longitude?.toString() ?? "";
 
       CollectionReference instanciaColecaoFirebase =
-      FirebaseFirestore.instance.collection(widget.colecao); // Utiliza o nome da coleção fornecido pelo usuário
+      FirebaseFirestore.instance.collection(widget.colecao);
       try {
         await instanciaColecaoFirebase
             .doc(dl.dt.toString().trim())

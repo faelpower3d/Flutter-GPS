@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
         title: Text("Login"),
         backgroundColor: Colors.blue,
       ),
-      body: Center( // Wrap with Center widget to center the content
+      body: Center(
         child: _body(),
       ),
     );
@@ -49,15 +49,22 @@ class _HomeState extends State<Home> {
       children: [
         InputTextos("Login", "Email", controller: _email),
         SizedBox(height: 16),
-        InputTextos("Password", "Senha", controller: _pwd),
+        TextField(
+          decoration: InputDecoration(
+            labelText: "Senha",
+            hintText: "Digite sua senha",
+          ),
+          controller: _pwd,
+          obscureText: true, // Isso oculta os caracteres digitados
+        ),
         SizedBox(height: 16),
         InputTextos("Motorista", "Name", controller: _collectionNameController),
-        SizedBox(height: 16),
+        SizedBox(height: 60),
         Botoes("Authenticate", onPressed: () {
           _authenticate(context);
         }),
         SizedBox(height: 16),
-        if (_msg.isNotEmpty) // Mostra mensagem de erro se houver
+        if (_msg.isNotEmpty)
           Text(
             _msg,
             style: TextStyle(color: Colors.red),
@@ -84,7 +91,7 @@ class _HomeState extends State<Home> {
       setState(() {
         _msg = "Digite o nome do motorista";
       });
-      return; // Sai do método se o nome da coleção estiver vazio
+      return;
     }
 
     try {
