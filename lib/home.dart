@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
             hintText: "Digite sua senha",
           ),
           controller: _pwd,
-          obscureText: true, // Isso oculta os caracteres digitados
+          obscureText: true,
         ),
         SizedBox(height: 16),
         InputTextos("Motorista", "Name", controller: _collectionNameController),
